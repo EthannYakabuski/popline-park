@@ -69,6 +69,9 @@ func _process(delta:float)->void:
 		var cold=game.Profile.new(game.profile.path)
 		print("NATIVE_ACCEPTANCE_RESULT ",JSON.stringify({"won":game.run.won,"score":game.run.score,"rails":game.run.rails,"coins":cold.data.coins,"saved_rounds":cold.data.totals.rounds,"fps":Engine.get_frames_per_second(),"native_ads":services._native_ads,"ads_ready":services._ads_ready,"reward_available":services.can_reward()}))
 		await get_tree().create_timer(2).timeout
+		if not game._can_act():
+			print("NATIVE_ACCEPTANCE_STOPPED_AT_FULLSCREEN_TRANSITION")
+			return
 		failure_run=true
 		elapsed=0
 		game._retry()

@@ -62,6 +62,9 @@ func _ready() -> void:
 	Services.menu_bottom_reserve_changed.connect(_request_ui)
 	Services.availability_changed.connect(_service_changed)
 	Services.play_games_notice.connect(func(message: String) -> void: _message(message))
+	Services.service_notice.connect(func(message: String) -> void:
+		if page=="settings": _message(message)
+	)
 	get_viewport().size_changed.connect(_request_ui)
 	show_page("home")
 	if not profile.recovery.is_empty(): _message(profile.recovery)

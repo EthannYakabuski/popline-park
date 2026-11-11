@@ -98,6 +98,8 @@ func run_tests()->void:
 	for page in ["home","campaign","locker","daily","journal","settings"]:
 		game.show_page(page)
 		check(game.ui.get_child_count()>1,"implemented page loads: "+page)
+	services.privacy_options()
+	check(game.toast.visible and "Android" in game.toast.text,"unavailable privacy options explain the platform fallback")
 	game.queue_free()
 	await process_frame
 	print("UI_FLOW_TESTS ",checks," checks / ",failed," failures; callback fixture is not native ad evidence")

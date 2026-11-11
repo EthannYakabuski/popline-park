@@ -11,5 +11,6 @@
 - First Android build: blank Play Games configuration emitted metadata referencing a missing string. The exporter now omits that metadata when disabled, while retaining actual native libraries and configured-ID behavior.
 - Browser play: default font lacked menu/play/heart glyphs. Controls use portable text and hearts use a licensed Kenney texture. Final profile captures were regenerated.
 - Additional corrupt-save cases: schema objects/arrays and fractional metrics are rejected without conversion errors; an impossible generator distance cannot cause a huge catch-up loop.
+- Final browser settings check: advertising privacy produced no visible fallback message on Web. Settings now display platform service notices, with a regression assertion. The native acceptance driver also stops cleanly if its next scripted action is blocked by an actual full-screen ad.
 
-Current rules pass: 152 assertions, 0 failures. UI lifecycle fixture: 26 checks, 0 failures. Artifact-bound native/Web evidence and outstanding checks are recorded in ACCEPTANCE.md; source fixtures are not production-service evidence.
+Current rules pass: 152 assertions, 0 failures. UI lifecycle fixture has 27 checks, including the final privacy-message regression. Artifact-bound native/Web evidence and outstanding checks are recorded in ACCEPTANCE.md; source fixtures are not production-service evidence.
