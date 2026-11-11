@@ -1,5 +1,7 @@
 {
   "method": "Read durable JSON after force-stop, following actual SDK earned event",
+  "runtime_source_commit": "ac5e30256d21b17c09a43dd18da6e69014fc7473",
+  "acceptance_apk_sha256": "c3fcadf7381e209a0e2549a7d2794db347a7a6c3d6d944bba58c304789785592",
   "continued": true,
   "hearts": 2,
   "run_id": 2,

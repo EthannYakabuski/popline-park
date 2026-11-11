@@ -1,28 +1,28 @@
 {
   "game": "Popline Park",
-  "source_commit_at_receipt": "f67ed48a73cc740fac74a989eeb2758ef100d248",
+  "source_commit_at_receipt": "ac5e30256d21b17c09a43dd18da6e69014fc7473",
   "godot": "4.5.1.stable.official.f62fdbde1",
   "package": "com.ethannyakabuski.poplinepark",
   "version": "1.0.0 (1)",
   "artifacts": {
     "build/android/popline-park-debug.aab": {
-      "bytes": 100259994,
-      "sha256": "6d89768e3ea113b784c2174ea5b1b37344cb9c4c384a672b7433d19c434cd4e3",
+      "bytes": 100260959,
+      "sha256": "8b5a7018e51926780a42046a2b72ff1d105b99da9783fc46461f3084fbd14d9e",
       "packaged_notices_and_test_config": "PASS"
     },
     "build/android/popline-park-test.apk": {
-      "bytes": 272887442,
-      "sha256": "63bf1dff725afb524303e5118313eb7dda2d979b26a690c915669a3ceee327a9",
+      "bytes": 272888550,
+      "sha256": "eaa3e61eba8b85c22b1670630c84bf0a16a8d738139d46621d7252d0bfb26d97",
       "packaged_notices_and_test_config": "PASS"
     },
     "build/android/popline-park-acceptance.apk": {
-      "bytes": 272887466,
-      "sha256": "52c8712a76b965dfa82a82620057711f6ff2100f7516c67974c6bb582ff61149",
+      "bytes": 272888574,
+      "sha256": "c3fcadf7381e209a0e2549a7d2794db347a7a6c3d6d944bba58c304789785592",
       "packaged_notices_and_test_config": "PASS"
     },
     "build/site/play/index.pck": {
-      "bytes": 8938596,
-      "sha256": "ae91cdc0280c46bea65e218eec368142cd4fe79cd80239d00cc69cc496a5d072"
+      "bytes": 8942884,
+      "sha256": "8baf99799716116d582e2ae2a7685d945a5c6c3c6d2e5482845072912d2b341d"
     },
     "build/site/play/index.wasm": {
       "bytes": 38034280,
@@ -450,9 +450,9 @@
     "assets/ui/star.png": "3b985be792f2f73f0d5b2827c806236723f44f8cd03c39fc73a4e273ec03e4f8",
     "export_presets.cfg": "5a5c2b293ca53a13ddeb81710fa7b21a8baea6ef6e2bb0ed52e7e5ccf83257d9",
     "game/catalog.json": "56cb3c8a38de8154ed868fd470fb10ec904529fea12539fb1f4f9b1d80ec9dd2",
-    "game/main.gd": "e4ce2fce46ad7a4f385f750c965c15dda20356cba098d67f7139a5404c0d7e63",
+    "game/main.gd": "717319fba3c1185fc91a6513ca90c9bc740971f9649d6c17be55be3ee613e45e",
     "game/main.gd.uid": "dab8af77d3d3651646bc7c24db2ce75c442168e3e2cec18982f36232a2bac91f",
-    "game/native_acceptance.gd": "71944bb5fed98036d93d9b44681eb6728f31b891d9f3b94c069d677576a6dd1f",
+    "game/native_acceptance.gd": "28dbb71ee75ffccefc9da17088f0583cf34751c6c1ed0fc4f82dd85a1b048292",
     "game/native_acceptance.gd.uid": "97996bb048acbd67a140d247b63d4e28c59d56c1caa24ff0e0122687b299d7c8",
     "game/park.gd": "3eb4ca5c3b7ddc85bda6763401e932a2bc2dc9490ebdac82f80b4c78c8594990",
     "game/park.gd.uid": "904ff89f9379ee04db632cce8132feb535fe85662dd14440fef6818aee2332bd",

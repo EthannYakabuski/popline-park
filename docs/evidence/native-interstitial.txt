@@ -1,3 +1,5 @@
-Controlled emulator cadence fixture: initial persisted round count set to 2 in this new app's disposable test profile. One actual completed ride triggered the third-round SDK interstitial. These excerpts prove presentation, not dismissal or three freshly played rounds. The subsequent driver stages are outside this fixture.
-11-11 13:42:22.159  7719  7753 I godot   : NATIVE_ACCEPTANCE_RESULT {"ads_ready":true,"coins":102.0,"fps":47.0,"native_ads":true,"rails":4,"reward_available":false,"saved_rounds":1.0,"score":1155,"won":true}
-11-11 13:42:22.180  7719  7753 I godot   : NATIVE_AD_EVENT {"context":"","event":"interstitial_presented"}
+Final acceptance APK; source ac5e30256d21b17c09a43dd18da6e69014fc7473; SHA-256 c3fcadf7381e209a0e2549a7d2794db347a7a6c3d6d944bba58c304789785592.
+Controlled emulator cadence fixture: initial persisted round count set to 2 in this new app's disposable test profile. One actual completed ride triggered the third-round SDK interstitial. These excerpts prove presentation, not dismissal or three freshly played rounds. The driver correctly stopped at the fullscreen transition.
+11-11 13:59:22.229  8562  8593 I godot   : NATIVE_ACCEPTANCE_RESULT {"ads_ready":true,"coins":102.0,"fps":57.0,"native_ads":true,"rails":4,"reward_available":false,"saved_rounds":1.0,"score":1155,"won":true}
+11-11 13:59:22.246  8562  8593 I godot   : NATIVE_AD_EVENT {"context":"","event":"interstitial_presented"}
+11-11 13:59:24.123  8562  8593 I godot   : NATIVE_ACCEPTANCE_STOPPED_AT_FULLSCREEN_TRANSITION

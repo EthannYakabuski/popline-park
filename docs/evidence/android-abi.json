@@ -1,0 +1,25 @@
+{
+  "bundle": "build/android/popline-park-debug.aab",
+  "architectures": [
+    "arm64-v8a",
+    "x86",
+    "x86_64"
+  ],
+  "native_libraries": {
+    "arm64-v8a": [
+      "libc++_shared.so",
+      "libgodot_android.so"
+    ],
+    "x86": [
+      "libc++_shared.so",
+      "libgodot_android.so"
+    ],
+    "x86_64": [
+      "libc++_shared.so",
+      "libgodot_android.so"
+    ]
+  },
+  "checked_ELF_headers": 6,
+  "ABI_pair_check": "PASS",
+  "google_play_submission_verified": false
+}

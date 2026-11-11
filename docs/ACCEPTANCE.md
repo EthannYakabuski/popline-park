@@ -8,12 +8,14 @@ This is a complete first-pass game and publishing package for review, with test-
 
 SHA-256, sizes, runtime source-file hashes and source commit are recorded in [build-evidence.json](build-evidence.json). Later documentation-only commits do not imply a different tested binary. The repository's CI run and deployed `build.json` identify the actual remote Web source commit. Local build outputs and genuine test profiles are intentionally not committed.
 
+The final local binaries were rebuilt from runtime source commit `ac5e30256d21b17c09a43dd18da6e69014fc7473`. The refreshed acceptance APK was installed and exercised again; its actual earned-reward/cold-save evidence includes the APK hash. Hosted CI also passed 152 rules and 27 lifecycle checks for that exact code commit in [run 43081339752](https://github.com/EthannYakabuski/popline-park/actions/runs/43081339752). Subsequent evidence-only commits retain the same runtime source.
+
 Engine: Godot **4.5.1.stable.official.f62fdbde1**, Compatibility. Android package `com.ethannyakabuski.poplinepark`, min API 24, target API 36. The built test APK manifest was inspected with Android `aapt`; its compile SDK is 35 and target SDK is 36. Actual native ELF headers include ARM64, x86 and x86_64; every x86 library has its matching x86_64 counterpart. The AdMob manifest app ID is Google's sample ID, not a copied production mapping.
 
 ## Passing source checks
 
 - **152 rules/persistence assertions, zero failures.** All 30 campaign routes finish with the baseline stock-gear dodge/grind policy. Daily seeds/claims, seven-day gifts, backward-clock denial, gear limits, rewards, duplicate payouts, schema/field corruption, validated backup recovery and storage failure are covered. This automated policy demonstrates feasibility; it is not a human difficulty rating.
-- **26 UI/lifecycle assertions, zero failures.** Repeated controls under pause, background and Back, all full-screen-ad state gates, explicit resume, mode switching, district restoration, failed-save earned entitlement retry, duplicate callback denial and unavailable-ad no-reward behavior.
+- **27 UI/lifecycle assertions, zero failures.** Repeated controls under pause, background and Back, all full-screen-ad state gates, explicit resume, mode switching, district restoration, failed-save earned entitlement retry, duplicate callback denial, unavailable-ad no-reward behavior and visible Web privacy fallback feedback.
 - Content validation: store copy limits, 20 achievements, 3 boards, paired 512px/128px icons, 512px app icon, 1024×500 feature image, 18 required capture dimensions and notices.
 
 The callback fixtures deliberately exercise application logic. They are not evidence that a native SDK awarded or dismissed an ad.
@@ -30,7 +32,9 @@ The driver then followed actual obstacle lanes until failure and requested the r
 
 ## Browser acceptance
 
-The Web export was opened in the connected Chromium in-app browser. An actual ride accepted steering and ollie input; Escape paused it. The save-and-return action and a full reload recovered the paused ride at **50 points and five tokens**. Unsupported font symbols were found on that first browser pass and replaced by portable controls/Kenney heart textures. Web uses local saves and platform-unavailable messages, without fake ad rewards. Browser persistence remains subject to the user's site-storage settings.
+The Web export was opened in the connected Chromium in-app browser. An actual ride accepted steering and ollie input; Escape paused it. The save-and-return action and a full reload recovered the paused ride at **50 points and five tokens**. Unsupported font symbols were found on that first browser pass and replaced by portable controls/Kenney heart textures. Web uses local saves and platform-unavailable messages, without fake ad rewards. The final local build also granted the daily gift once, rejected a repeated claim and retained exactly 50 coins after a full reload. Browser persistence remains subject to the user's site-storage settings.
+
+The live Pages build for `ac5e302` was also opened and played. Its pause panel and heart/control rendering were inspected, and the privacy and Play Games buttons displayed their intended unavailable/configuration messages. The public visual review rendered with all 14 referenced images loaded.
 
 ## Open acceptance and publisher configuration
 
