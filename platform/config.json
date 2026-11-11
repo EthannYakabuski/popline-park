@@ -1,0 +1,41 @@
+{
+  "admob": {
+    "test_mode": true,
+    "app_id": "ca-app-pub-3940256099942544~3347511713",
+    "banner_unit_id": "",
+    "interstitial_unit_id": "",
+    "rewarded_unit_id": "",
+    "tag_for_under_age_of_consent": false
+  },
+  "play_games": {
+    "enabled": false,
+    "game_id": "",
+    "achievements": {
+      "first_line": "",
+      "five_lines": "",
+      "twenty_lines": "",
+      "fifty_rides": "",
+      "first_rail": "",
+      "rail_ten": "",
+      "rail_fifty": "",
+      "trick_ten": "",
+      "trick_hundred": "",
+      "combo_six": "",
+      "combo_fifteen": "",
+      "score_thousand": "",
+      "score_three": "",
+      "tokens_hundred": "",
+      "clean_five": "",
+      "level_five": "",
+      "level_ten": "",
+      "daily_three": "",
+      "gear_three": "",
+      "star_thirty": ""
+    },
+    "leaderboards": {
+      "score": "",
+      "combo": "",
+      "xp": ""
+    }
+  }
+}

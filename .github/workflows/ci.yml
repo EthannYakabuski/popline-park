@@ -1,0 +1,74 @@
+name: Validate and publish Web
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: popline-pages
+  cancel-in-progress: true
+jobs:
+  validate:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/cache@v4
+        id: godot-cache
+        with:
+          path: |
+            .ci/godot
+            ~/.local/share/godot/export_templates/4.5.1.stable
+          key: godot-4.5.1-linux-web-v1
+      - name: Install official pinned Godot and Web templates
+        if: steps.godot-cache.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          mkdir -p .ci/godot "$HOME/.local/share/godot/export_templates/4.5.1.stable"
+          cd .ci/godot
+          base=https://github.com/godotengine/godot-builds/releases/download/4.5.1-stable
+          curl --fail --location --retry 3 -o engine.zip "$base/Godot_v4.5.1-stable_linux.x86_64.zip"
+          curl --fail --location --retry 3 -o templates.tpz "$base/Godot_v4.5.1-stable_export_templates.tpz"
+          curl --fail --location --retry 3 -o SHA512-SUMS.txt "$base/SHA512-SUMS.txt"
+          python3 - <<'PY'
+          import hashlib
+          from pathlib import Path
+          sums={line.split()[-1].lstrip('*'):line.split()[0] for line in Path('SHA512-SUMS.txt').read_text().splitlines()}
+          for local,remote in [('engine.zip','Godot_v4.5.1-stable_linux.x86_64.zip'),('templates.tpz','Godot_v4.5.1-stable_export_templates.tpz')]:
+              with open(local,'rb') as f: actual=hashlib.file_digest(f,'sha512').hexdigest()
+              assert actual==sums[remote], 'Official checksum mismatch: '+remote
+          PY
+          unzip -q engine.zip
+          unzip -j -q templates.tpz 'templates/web_nothreads_debug.zip' 'templates/web_nothreads_release.zip' -d "$HOME/.local/share/godot/export_templates/4.5.1.stable"
+          rm engine.zip templates.tpz
+      - name: Import and check
+        run: |
+          export PATH="$PWD/.ci/godot:$PATH"
+          Godot_v4.5.1-stable_linux.x86_64 --headless --editor --path . --import
+          mkdir -p build/test-rules build/test-ui build/site/play
+          XDG_DATA_HOME="$PWD/build/test-rules" POPLINE_TEST_ROOT="$PWD/build/test-rules" timeout 120 Godot_v4.5.1-stable_linux.x86_64 --headless --path . --script tests/test_rules.gd
+          XDG_DATA_HOME="$PWD/build/test-ui" POPLINE_TEST_ROOT="$PWD/build/test-ui" timeout 120 Godot_v4.5.1-stable_linux.x86_64 --headless --path . --script tests/test_ui_flows.gd
+          python3 tools/verify_android_bundle.py
+          python3 tools/validate_content.py
+          Godot_v4.5.1-stable_linux.x86_64 --headless --path . --export-release Web build/site/play/index.html
+          python3 tools/assemble_site.py build/site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/site
+          retention-days: 1
+  deploy:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

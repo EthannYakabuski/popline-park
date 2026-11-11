@@ -1,0 +1,7 @@
+Original code and original generated music: Apache-2.0; see LICENSE.
+Kenney Mini Skate, Nature, City Commercial, UI, Interface Sounds, Impact Sounds, Game Icons and Particle Pack: CC0; exact notices here.
+Poing Godot AdMob and Godot Play Game Services: MIT; exact notices here.
+Godot engine: MIT (https://godotengine.org/license/); engine runtime contains third-party notices.
+Illustrated branding generated for this project using OpenAI image generation.
+Kenney Board Game Icons: CC0; heart texture, exact notice in kenney-board-game-icons.txt.
+Noto Sans CJK SC bundled with AdMob editor assets: SIL Open Font License 1.1; see NotoSansCJK-OFL.txt.

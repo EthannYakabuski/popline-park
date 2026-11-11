@@ -1,0 +1,184 @@
+{
+  "achievements": [
+    {
+      "key": "first_line",
+      "name": "First push",
+      "description": "Finish your first park line.",
+      "metric": "wins",
+      "target": 1,
+      "icon": "achievements/first_line.png"
+    },
+    {
+      "key": "five_lines",
+      "name": "Finding flow",
+      "description": "Finish five park lines.",
+      "metric": "wins",
+      "target": 5,
+      "icon": "achievements/five_lines.png"
+    },
+    {
+      "key": "twenty_lines",
+      "name": "Park regular",
+      "description": "Finish twenty park lines.",
+      "metric": "wins",
+      "target": 20,
+      "icon": "achievements/twenty_lines.png"
+    },
+    {
+      "key": "fifty_rides",
+      "name": "Local legend",
+      "description": "Bank fifty rides.",
+      "metric": "rounds",
+      "target": 50,
+      "icon": "achievements/fifty_rides.png"
+    },
+    {
+      "key": "first_rail",
+      "name": "On the rail",
+      "description": "Land your first boardslide.",
+      "metric": "rails",
+      "target": 1,
+      "icon": "achievements/first_rail.png"
+    },
+    {
+      "key": "rail_ten",
+      "name": "Steel wheels",
+      "description": "Land ten boardslides.",
+      "metric": "rails",
+      "target": 10,
+      "icon": "achievements/rail_ten.png"
+    },
+    {
+      "key": "rail_fifty",
+      "name": "Rail royalty",
+      "description": "Land fifty boardslides.",
+      "metric": "rails",
+      "target": 50,
+      "icon": "achievements/rail_fifty.png"
+    },
+    {
+      "key": "trick_ten",
+      "name": "Pop practice",
+      "description": "Land ten tricks.",
+      "metric": "tricks",
+      "target": 10,
+      "icon": "achievements/trick_ten.png"
+    },
+    {
+      "key": "trick_hundred",
+      "name": "Air time",
+      "description": "Land one hundred tricks.",
+      "metric": "tricks",
+      "target": 100,
+      "icon": "achievements/trick_hundred.png"
+    },
+    {
+      "key": "combo_six",
+      "name": "Keep it rolling",
+      "description": "Reach a six-trick combo.",
+      "metric": "combo",
+      "target": 6,
+      "icon": "achievements/combo_six.png"
+    },
+    {
+      "key": "combo_fifteen",
+      "name": "Unbroken line",
+      "description": "Reach a fifteen-trick combo.",
+      "metric": "combo",
+      "target": 15,
+      "icon": "achievements/combo_fifteen.png"
+    },
+    {
+      "key": "score_thousand",
+      "name": "Four digits",
+      "description": "Score 1,000 points in one ride.",
+      "metric": "score",
+      "target": 1000,
+      "icon": "achievements/score_thousand.png"
+    },
+    {
+      "key": "score_three",
+      "name": "Big session",
+      "description": "Score 3,000 points in one ride.",
+      "metric": "score",
+      "target": 3000,
+      "icon": "achievements/score_three.png"
+    },
+    {
+      "key": "tokens_hundred",
+      "name": "Pocket change",
+      "description": "Collect one hundred park tokens.",
+      "metric": "tokens",
+      "target": 100,
+      "icon": "achievements/tokens_hundred.png"
+    },
+    {
+      "key": "clean_five",
+      "name": "Fresh grip",
+      "description": "Finish five lines without a bump.",
+      "metric": "clean",
+      "target": 5,
+      "icon": "achievements/clean_five.png"
+    },
+    {
+      "key": "level_five",
+      "name": "Club member",
+      "description": "Reach skater level five.",
+      "metric": "level",
+      "target": 5,
+      "icon": "achievements/level_five.png"
+    },
+    {
+      "key": "level_ten",
+      "name": "Club captain",
+      "description": "Reach skater level ten.",
+      "metric": "level",
+      "target": 10,
+      "icon": "achievements/level_ten.png"
+    },
+    {
+      "key": "daily_three",
+      "name": "Daily rider",
+      "description": "Finish daily lines on three different days.",
+      "metric": "daily",
+      "target": 3,
+      "icon": "achievements/daily_three.png"
+    },
+    {
+      "key": "gear_three",
+      "name": "Dialed in",
+      "description": "Purchase three gear upgrades.",
+      "metric": "gear",
+      "target": 3,
+      "icon": "achievements/gear_three.png"
+    },
+    {
+      "key": "star_thirty",
+      "name": "Star collector",
+      "description": "Earn thirty campaign stars.",
+      "metric": "stars",
+      "target": 30,
+      "icon": "achievements/star_thirty.png"
+    }
+  ],
+  "leaderboards": [
+    {
+      "key": "score",
+      "name": "Best session",
+      "description": "Highest score from a single ride.",
+      "icon": "leaderboards/score.png"
+    },
+    {
+      "key": "combo",
+      "name": "Longest line",
+      "description": "Highest clean combo in a single ride.",
+      "icon": "leaderboards/combo.png"
+    },
+    {
+      "key": "xp",
+      "name": "Club experience",
+      "description": "Lifetime skater XP. Higher is better.",
+      "icon": "leaderboards/xp.png"
+    }
+  ]
+}

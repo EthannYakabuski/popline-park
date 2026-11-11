@@ -1,0 +1,415 @@
+[
+  {
+    "pack": "kenney_blaster-kit_2.1",
+    "files": 211,
+    "models": 40,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_board-game-icons",
+    "files": 774,
+    "models": 0,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_car-kit",
+    "files": 259,
+    "models": 50,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_casino-audio",
+    "files": 58,
+    "models": 0,
+    "previews": [
+      "Preview.ogg"
+    ]
+  },
+  {
+    "pack": "kenney_city-kit-commercial_2.1",
+    "files": 219,
+    "models": 41,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview (Variation B).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_city-kit-industrial_2.0",
+    "files": 201,
+    "models": 37,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview (Variation B).png",
+      "Preview (Variation C).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_city-kit-roads",
+    "files": 487,
+    "models": 95,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_city-kit-suburban_20",
+    "files": 216,
+    "models": 40,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview (Variation B).png",
+      "Preview (Variation C).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_crosshair-pack",
+    "files": 2013,
+    "models": 0,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_desert-shooter-pack_1.0",
+    "files": 565,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample A.png",
+      "Sample B.png"
+    ]
+  },
+  {
+    "pack": "kenney_digital-audio",
+    "files": 67,
+    "models": 0,
+    "previews": [
+      "Preview.ogg"
+    ]
+  },
+  {
+    "pack": "kenney_emotes-pack",
+    "files": 534,
+    "models": 0,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_fantasy-ui-borders",
+    "files": 286,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_foliage-pack",
+    "files": 230,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Preview_KenneyNL.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_furniture-kit",
+    "files": 1546,
+    "models": 140,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_game-icons",
+    "files": 434,
+    "models": 0,
+    "previews": [
+      "preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_impact-sounds",
+    "files": 133,
+    "models": 0,
+    "previews": []
+  },
+  {
+    "pack": "kenney_input-prompts-pixel",
+    "files": 823,
+    "models": 0,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_input-prompts_1.5",
+    "files": 4667,
+    "models": 0,
+    "previews": [
+      "Preview Flairs & Overlays.png",
+      "Preview Generic.png",
+      "Preview Keyboard & Mouse.png",
+      "Preview Nintendo Gamecube.png",
+      "Preview Nintendo Switch 2.png",
+      "Preview Nintendo Switch.png",
+      "Preview Nintendo Wii.png",
+      "Preview Nintendo WiiU.png"
+    ]
+  },
+  {
+    "pack": "kenney_interface-sounds",
+    "files": 103,
+    "models": 0,
+    "previews": []
+  },
+  {
+    "pack": "kenney_medals",
+    "files": 35,
+    "models": 0,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_mini-characters",
+    "files": 139,
+    "models": 26,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_mini-market",
+    "files": 114,
+    "models": 20,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview (Variation B).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_mini-skate",
+    "files": 111,
+    "models": 20,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_modular-buildings",
+    "files": 554,
+    "models": 108,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview (Variation B).png",
+      "Preview.png",
+      "Sample.png",
+      "Previews\\building-sample-house-a.png",
+      "Previews\\building-sample-house-b.png",
+      "Previews\\building-sample-house-c.png",
+      "Previews\\building-sample-tower-a.png"
+    ]
+  },
+  {
+    "pack": "kenney_modular-cave-kit_1.0",
+    "files": 214,
+    "models": 40,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview (Variation B).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_nature-kit",
+    "files": 3624,
+    "models": 329,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_particle-pack",
+    "files": 195,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Unity samples\\particlePack_samples.unitypackage"
+    ]
+  },
+  {
+    "pack": "kenney_pirate-kit",
+    "files": 370,
+    "models": 72,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_pirate-pack",
+    "files": 411,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Preview_KenneyNL.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_rpg-audio",
+    "files": 55,
+    "models": 0,
+    "previews": [
+      "Preview.ogg"
+    ]
+  },
+  {
+    "pack": "kenney_skyboxes",
+    "files": 12,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample (Day).png",
+      "Sample (Night).png"
+    ]
+  },
+  {
+    "pack": "kenney_smoke-particles",
+    "files": 80,
+    "models": 0,
+    "previews": [
+      "preview.png",
+      "sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_survival-kit",
+    "files": 412,
+    "models": 80,
+    "previews": [
+      "Preview (Variation A).png",
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_tiny-dungeon",
+    "files": 142,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png",
+      "Tiled\\sampleMap.tmx",
+      "Tiled\\sampleSheet.tsx"
+    ]
+  },
+  {
+    "pack": "kenney_tiny-farm",
+    "files": 141,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_tiny-ski",
+    "files": 142,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png",
+      "Tiled\\sampleMap.tmx",
+      "Tiled\\sampleSheet.tsx"
+    ]
+  },
+  {
+    "pack": "kenney_tiny-town",
+    "files": 141,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_train-kit",
+    "files": 527,
+    "models": 103,
+    "previews": [
+      "Preview (Railroad Damaged).png",
+      "Preview (Railroad Rail).png",
+      "Preview (Railroad).png",
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "kenney_ui-audio",
+    "files": 55,
+    "models": 0,
+    "previews": [
+      "Preview.ogg"
+    ]
+  },
+  {
+    "pack": "kenney_ui-pack",
+    "files": 1315,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_ui-pack-adventure",
+    "files": 393,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  },
+  {
+    "pack": "kenney_watercraft-pack",
+    "files": 239,
+    "models": 46,
+    "previews": [
+      "Preview.png"
+    ]
+  },
+  {
+    "pack": "mobile-controls-1",
+    "files": 1435,
+    "models": 0,
+    "previews": [
+      "Preview.png",
+      "Sample.png"
+    ]
+  }
+]
