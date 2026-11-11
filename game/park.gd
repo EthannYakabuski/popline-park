@@ -15,6 +15,9 @@ var last_anim := ""
 var ground: MeshInstance3D
 var sun: DirectionalLight3D
 var home_props: Node3D
+var water: MeshInstance3D
+var verge: MeshInstance3D
+var promenade: MeshInstance3D
 
 func _ready() -> void:
 	environment = WorldEnvironment.new()
@@ -54,9 +57,9 @@ func _ready() -> void:
 	add_child(camera)
 	camera.look_at(Vector3(0,0,-14))
 	ground = box(Vector3(11,0.24,200),Vector3(0,-0.25,-65),Color("9382b2"))
-	box(Vector3(240,0.2,360),Vector3(0,-0.55,-110),Color("197f91"))
-	box(Vector3(23,0.22,200),Vector3(-16,-0.3,-65),Color("527946"))
-	box(Vector3(11,0.23,200),Vector3(11,-0.3,-65),Color("bba889"))
+	water = box(Vector3(240,0.2,360),Vector3(0,-0.55,-110),Color("197f91"))
+	verge = box(Vector3(23,0.22,200),Vector3(-16,-0.3,-65),Color("527946"))
+	promenade = box(Vector3(11,0.23,200),Vector3(11,-0.3,-65),Color("bba889"))
 	# A fixed far shore gives the moving promenade a waterfront setting.
 	for i in range(13):
 		var rock := model("nature/rock_smallA",Vector3(-95+i*17,-1,-175-abs(i-6)*3),Vector3(30,20+i%4*7,25))
@@ -73,7 +76,7 @@ func _ready() -> void:
 		var z := -float(i)*9.0
 		var tree_name := "tree_palmTall" if i % 3 == 0 else "tree_oak"
 		var tree := model("nature/"+tree_name,Vector3(-9-(i%3)*2,0,z),Vector3.ONE*(2.2 if i%3==0 else 1.8))
-		scenery.append({"node":tree,"z":z,"period":162.0})
+		scenery.append({"node":tree,"z":z,"period":162.0,"palm":true})
 		if i % 2 == 0:
 			var planter := box(Vector3(2.7,0.4,3.4),Vector3(-7.5,0,z),Color("f0c6b5"))
 			scenery.append({"node":planter,"z":z,"period":162.0})
@@ -107,6 +110,7 @@ func _ready() -> void:
 	rail.rotation.y=0
 	model("skate/obstacle-end",Vector3(-2,0,-15),Vector3.ONE*4,home_props)
 	model("skate/half-pipe",Vector3(-0.5,0,-25),Vector3.ONE*5,home_props)
+	_neighborhood_scenery()
 	set_skater(0)
 	set_district(0)
 
@@ -155,19 +159,51 @@ func model(path: String,pos: Vector3,scale_value: Vector3,parent: Node3D = self)
 	parent.add_child(n)
 	return n
 
+func _neighborhood_scenery() -> void:
+	for i in range(12):
+		var z:float=-i*14.0
+		var pine:=model("nature/tree_pineDefaultA",Vector3(-8-i%3*3,0,z),Vector3.ONE*(2.5+i%3*0.5))
+		scenery.append({"node":pine,"z":z,"period":168.0,"district":4})
+		var rock:=model("nature/rock_smallB",Vector3(8+i%2*3,0,z),Vector3.ONE*3)
+		scenery.append({"node":rock,"z":z,"period":168.0,"district":4})
+	for i in range(6):
+		var z:float=-i*28.0
+		var court:=Node3D.new()
+		add_child(court)
+		court.position=Vector3(-14,0,z)
+		box(Vector3(11,0.08,18),Vector3.ZERO,Color("9e627e"),court)
+		for edge in [-4.8,4.8]: box(Vector3(0.10,0.03,16),Vector3(edge,0.06,0),Color("ffdbad"),court)
+		box(Vector3(9.7,0.03,0.1),Vector3(0,0.06,0),Color("ffdbad"),court)
+		model("skate/structure-wood",Vector3(0,0,-7),Vector3(4,2,4),court)
+		scenery.append({"node":court,"z":z,"period":168.0,"district":3})
+		var dock:=Node3D.new()
+		add_child(dock)
+		dock.position=Vector3(20,0,z)
+		model("skate/floor-wood",Vector3.ZERO,Vector3(10,1,10),dock)
+		for offset in [-3,3]:
+			box(Vector3(0.5,3,0.5),Vector3(offset,0,-3),Color("577d99"),dock)
+			box(Vector3(0.8,0.3,0.8),Vector3(offset,1.6,-3),Color("ffe2a1"),dock)
+		model("city/building-c",Vector3(5,0,-5),Vector3.ONE*3,dock)
+		scenery.append({"node":dock,"z":z,"period":168.0,"district":5})
+
 func set_district(index: int) -> void:
+	index=clampi(index,0,5)
 	if index == district: return
 	district = index
-	var colors := [Color("9382b2"),Color("b78c67"),Color("677fa5")]
-	ground.material_override = material(colors[index%3])
-	environment.environment.background_color = [Color("8bd4dc"),Color("eac2a0"),Color("657a9e")][index%3]
+	ground.material_override = material(Color(["9382b2","b78c67","677fa5","be827c","7a9782","657b9b"][index]))
+	water.material_override = material(Color(["197f91","578b94","345e82","7f838e","447d77","274f73"][index]))
+	verge.material_override = material(Color(["527946","7c8058","516c68","b68b70","425f49","49666b"][index]))
+	promenade.material_override = material(Color(["bba889","bca58d","8796ad","c7a78b","a1a38a","7b8d9e"][index]))
 	var sky_material: ProceduralSkyMaterial=environment.environment.sky.sky_material
-	sky_material.sky_top_color=[Color("74b9cd"),Color("c2939a"),Color("435879")][index%3]
-	sky_material.sky_horizon_color=[Color("8bc4d0"),Color("e0b7a5"),Color("8c9dbf")][index%3]
-	sun.light_color = [Color("fff3e1"),Color("ffdbb6"),Color("c4d8ff")][index%3]
+	sky_material.sky_top_color=Color(["74b9cd","c2939a","435879","ca8f9d","83acaa","344663"][index])
+	sky_material.sky_horizon_color=Color(["8bc4d0","e0b7a5","8c9dbf","efc1a2","c7d4b6","839ab6"][index])
+	environment.environment.fog_light_color=sky_material.sky_horizon_color
+	sun.light_color = Color(["fff3e1","ffdbb6","c4d8ff","ffdcad","e5f2d7","bbd4ff"][index])
+	for prop in scenery:
+		prop.node.visible = int(prop.get("district",index))==index and not (bool(prop.get("palm",false)) and index in [4,5])
 
 func animate_view(run: RefCounted, delta: float, active: bool) -> void:
-	time += delta
+	time += delta if active else 0.0
 	var d: float = run.distance if run != null else 0.0
 	for prop in scenery:
 		prop.node.position.z = fposmod(float(prop.z)+d+135.0,float(prop.period))-135.0
@@ -178,11 +214,14 @@ func animate_view(run: RefCounted, delta: float, active: bool) -> void:
 		player.position = Vector3(run.x,run.height,0)
 		player.rotation.z = lerpf(player.rotation.z,(float(run.LANES[run.lane])-run.x)*-0.12,0.2)
 		player.visible = run.invincible <= 0.0 or int(time*12)%2 == 0
-		board.rotation.z = sin((1.0-run.jump/run.jump_length)*TAU) if run.jump > 0.0 else 0.0
+		board.rotation.z = (1.0-run.flip_time/run.flip_duration)*TAU if run.flip_time>0.0 else 0.0
 		board.rotation.y = PI/2 if run.grind>0.0 else 0.0
-		rider.rotation.y = PI if run.grind>0.0 else PI/2
-		_set_animation("skate-grab" if run.grind>0 else ("skate-air" if run.height>0.1 else "skate"),active)
-		_update_events(run)
+		rider.rotation.y = PI if run.grind>0.0 or run.push_time>0.0 else PI/2
+		var motion:String="skate-grab" if run.grind>0 else ("skate-air" if run.jump>0.0 or run.drop_time>0.0 else ("skate" if run.push_time>0.0 else "skate-stand"))
+		_set_animation(motion,active and motion!="skate-stand")
+		if motion=="skate" and anim!=null:
+			anim.seek((1.0-run.push_time/run.PUSH_TIME)*anim.current_animation_length,true)
+		_update_events(run,active)
 	else:
 		home_props.visible=true
 		camera.position=Vector3(4,7.7,11)
@@ -199,7 +238,8 @@ func _set_animation(name_value: String, active: bool) -> void:
 	if anim == null: return
 	if last_anim != name_value and anim.has_animation(name_value):
 		anim.get_animation(name_value).loop_mode = Animation.LOOP_LINEAR
-		anim.play(name_value,0.15)
+		anim.play(name_value,0.0)
+		anim.advance(0)
 		last_anim = name_value
 	anim.speed_scale = 1.0 if active else 0.0
 
@@ -207,10 +247,10 @@ func reset_events() -> void:
 	for obj in obstacles.values(): obj.queue_free()
 	obstacles.clear()
 
-func _update_events(run: RefCounted) -> void:
+func _update_events(run: RefCounted,active: bool) -> void:
 	var visible_keys := {}
 	for event in run.events:
-		var relative: float = float(event.d) - run.distance
+		var relative: float = run.event_position(event) - run.distance
 		if relative > 95 or relative < -8: continue
 		var key := str(event.d)+"/"+str(event.lane)+str(event.kind)
 		visible_keys[key] = true
@@ -219,11 +259,24 @@ func _update_events(run: RefCounted) -> void:
 			match str(event.kind):
 				"block": obj = model("skate/obstacle-box",Vector3.ZERO,Vector3(2.4,1.6,2.4))
 				"rail":
-					obj = model("skate/rail-low",Vector3.ZERO,Vector3(3.0,3.0,3.0))
+					obj = model("skate/rail-low",Vector3.ZERO,Vector3(3.0,3.0,float(event.get("rail_length",3.0))))
 					obj.rotation.y = 0
 				"ramp":
 					obj = model("skate/obstacle-end",Vector3.ZERO,Vector3.ONE*2.8)
-					obj.rotation.y = PI
+					obj.rotation.y = 0
+				"skater":
+					obj = Node3D.new()
+					add_child(obj)
+					model("skate/skateboard",Vector3(0,0.12,0),Vector3.ONE*3.5,obj)
+					var other:=model("skate/character-skate-"+("girl" if int(event.variant)==0 else "boy"),Vector3(0,0.18,0),Vector3.ONE*3.5,obj)
+					other.rotation.y=PI/2
+					var other_anim:=find_animation(other)
+					if other_anim!=null and other_anim.has_animation("skate-stand"):
+						other_anim.play("skate-stand")
+						other_anim.advance(0)
+						other_anim.pause()
+					# A warm safety ring makes slower traffic distinct from the player.
+					box(Vector3(1.7,0.025,2.8),Vector3(0,0.02,0),Color("dc9b64"),obj)
 				_:
 					obj = MeshInstance3D.new()
 					var mesh := CylinderMesh.new()

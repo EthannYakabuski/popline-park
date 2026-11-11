@@ -1,13 +1,13 @@
 POPLINE PARK
 Find your line.
 
-Turn one tiny skate session into one more clean run. Popline Park brings a colorful waterfront skate park to your pocket: three lanes, one ollie button, and a trail of rails just asking for a boardslide.
+Turn one tiny skate session into one more clean run. Popline Park brings a colorful waterfront skate park to your pocket: three lanes, ollies, kickflips and momentum-building pushes, and a trail of rails just asking for a boardslide.
 
 Find your line
 Steer around blocks, pop onto rails and collect park tokens. Short rides make it easy to start; cleaner timing gives you something to master.
 
 Keep the combo rolling
-Chase three-star finishes across 30 campaign lines, stretch a session in Endless Ride, or come back for a fresh daily line.
+Chase three-star finishes across 60 campaign lines, stretch a session in Endless Ride, or come back for a fresh daily line.
 
 Make the park yours
 Choose a skater, earn XP and upgrade your pop, grip and style. A local journal tracks 20 achievements and your best scores.
@@ -18,8 +18,8 @@ A small neighborhood skate park where the next good line matters more than compl
 Technical notes
 Godot 4.5.1 Compatibility. Android first, portrait layout, touch controls, offline local saves. Playable Web edition with keyboard and pointer support. Android advertising and Play Games integrations are platform-specific; the review build uses test ads and local achievements until remote mappings are supplied.
 
-Suggested page title: Popline Park — A Pocket Skateboarding Arcade Game
-Meta description: Ollie, boardslide and chase a cleaner line in Popline Park. Explore 30 short skate challenges, daily goals and endless rides in a colorful waterfront park.
+Suggested page title: Popline Park â€” A Pocket Skateboarding Arcade Game
+Meta description: Ollie, boardslide and chase a cleaner line in Popline Park. Explore 60 short skate challenges, daily goals and endless rides in a colorful waterfront park.
 CTA for the review build: Play the Web preview
 CTA after store publication: Get Popline Park on Google Play
 Never invent a store URL or use a store badge before a listing exists.

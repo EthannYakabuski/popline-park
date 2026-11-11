@@ -1,0 +1,38 @@
+Final acceptance APK SHA-256: d87eb7ed9d9ddafb2dfcb5f685312ddfa63447869f47daf9372e28d360aa7873
+Only application acceptance/service events; viewport screenshots exclude OS/ad overlays.
+11-11 15:41:08.142  8008  8052 I godot   : EXPANSION_CHECK PASS disposable unlock fixture saved
+11-11 15:41:24.797  8008  8052 I godot   : EXPANSION_PLATFORM {"ads_ready":true,"fixture":"59 prior level unlocks; current rides and payouts are genuine","native_ads":true,"profile":"user://expansion-acceptance/profile-5392.json","status":"Android test ads are enabled."}
+11-11 15:41:24.866  8008  8052 I godot   : EXPANSION_CHECK PASS starts line 1
+11-11 15:41:25.292  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-01-start
+11-11 15:41:25.762  8008  8052 I godot   : EXPANSION_CHECK PASS capture push-forward
+11-11 15:41:26.118  8008  8052 I godot   : EXPANSION_CHECK PASS paused airborne repeated controls stay frozen
+11-11 15:41:26.120  8008  8052 I godot   : EXPANSION_CHECK PASS midflip state saved during interruption
+11-11 15:41:26.406  8008  8052 I godot   : EXPANSION_CHECK PASS capture flat-kickflip
+11-11 15:41:29.225  8008  8052 I godot   : EXPANSION_CHECK PASS capture long-rail
+11-11 15:41:29.662  8008  8052 I godot   : EXPANSION_CHECK PASS capture rail-kickflip
+11-11 15:41:38.270  8008  8052 I godot   : EXPANSION_CHECK PASS completed line 1
+11-11 15:41:38.520  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-01-result
+11-11 15:41:38.521  8008  8052 I godot   : EXPANSION_RIDE {"flips":8,"fps":55.0,"hits":0,"pushes":27,"rails":1,"route":1,"saved_coins":168.0,"saved_rounds":1.0,"score":2350,"won":true}
+11-11 15:41:39.446  8008  8052 I godot   : EXPANSION_CHECK PASS starts line 31
+11-11 15:41:39.842  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-31-start
+11-11 15:41:43.452  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-31-traffic
+11-11 15:41:43.800  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-31-ride
+11-11 15:42:03.198  8008  8052 I godot   : EXPANSION_CHECK PASS completed line 31
+11-11 15:42:03.459  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-31-result
+11-11 15:42:03.460  8008  8052 I godot   : EXPANSION_RIDE {"flips":18,"fps":47.0,"hits":0,"pushes":36,"rails":5,"route":31,"saved_coins":849.0,"saved_rounds":2.0,"score":12285,"won":true}
+11-11 15:42:04.370  8008  8052 I godot   : EXPANSION_CHECK PASS starts line 41
+11-11 15:42:04.697  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-41-start
+11-11 15:42:08.092  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-41-traffic
+11-11 15:42:08.358  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-41-ride
+11-11 15:42:29.979  8008  8052 I godot   : EXPANSION_CHECK PASS completed line 41
+11-11 15:42:30.353  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-41-result
+11-11 15:42:30.355  8008  8052 I godot   : EXPANSION_RIDE {"flips":16,"fps":36.0,"hits":0,"pushes":49,"rails":2,"route":41,"saved_coins":1346.0,"saved_rounds":3.0,"score":8450,"won":true}
+11-11 15:42:31.299  8008  8052 I godot   : EXPANSION_CHECK PASS starts line 60
+11-11 15:42:31.789  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-60-start
+11-11 15:42:35.206  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-60-traffic
+11-11 15:42:35.499  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-60-ride
+11-11 15:43:03.201  8008  8052 I godot   : EXPANSION_CHECK PASS completed line 60
+11-11 15:43:03.266  8008  8052 I godot   : NATIVE_AD_EVENT {"context":"","event":"interstitial_presented"}
+11-11 15:43:04.247  8008  8052 I godot   : EXPANSION_CHECK PASS capture line-60-result
+11-11 15:43:04.247  8008  8052 I godot   : EXPANSION_RIDE {"flips":23,"fps":47.0,"hits":0,"pushes":51,"rails":4,"route":60,"saved_coins":2144.0,"saved_rounds":4.0,"score":13875,"won":true}
+11-11 15:43:05.190  8008  8052 I godot   : EXPANSION_RUNTIME_COMPLETE {"checks_failed":0,"engine":"4.5.1-stable (official)","native":true,"profile":"user://expansion-acceptance/profile-5392.json","rides":[{"flips":8,"fps":55.0,"hits":0,"pushes":27,"rails":1,"route":1,"saved_coins":168.0,"saved_rounds":1.0,"score":2350,"won":true},{"flips":18,"fps":47.0,"hits":0,"pushes":36,"rails":5,"route":31,"saved_coins":849.0,"saved_rounds":2.0,"score":12285,"won":true},{"flips":16,"fps":36.0,"hits":0,"pushes":49,"rails":2,"route":41,"saved_coins":1346.0,"saved_rounds":3.0,"score":8450,"won":true},{"flips":23,"fps":47.0,"hits":0,"pushes":51,"rails":4,"route":60,"saved_coins":2144.0,"saved_rounds":4.0,"score":13875,"won":true}],"screenshot_provenance":"Genuine implemented viewport during automated play; unlocks are a disposable test fixture"}

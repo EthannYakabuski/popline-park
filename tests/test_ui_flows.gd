@@ -31,6 +31,8 @@ func run_tests()->void:
 		game._ride_action(-1)
 		game._ride_action(1)
 		game._ride_action(0)
+		game._trick_action("push")
+		game._trick_action("kickflip")
 		game._process(0.1)
 	check(game.run.snapshot()==paused_snapshot,"repeated visible controls and ticks freeze under pause")
 	game._resume()
@@ -47,6 +49,9 @@ func run_tests()->void:
 		var distance:float=game.run.distance
 		game._process(0.5)
 		game._ride_action(0)
+		game._trick_action("push")
+		game._trick_action("kickflip")
+		check(game.run.boost==0 and game.run.push_count==0 and not game.run.flip_used,"ad gate blocks push and flip")
 		check(game.paused and game.run.distance==distance and game.run.jump==0,"all ad UI freezes simulation: "+flag)
 		services.set(flag,false)
 		game._process(0.01)
@@ -70,7 +75,7 @@ func run_tests()->void:
 	game._store_active()
 	game.show_page("home")
 	game.start_run("daily",0)
-	check(game.park.district==20002%3,"restoring daily restores seeded district")
+	check(game.park.district==20002%6,"restoring daily restores seeded district")
 	game.run.hearts=0
 	game.run.done=true
 	game.run.won=false

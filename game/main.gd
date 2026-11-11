@@ -22,6 +22,10 @@ var hud_score: Label
 var hud_combo: Label
 var hud_hearts: Control
 var hud_progress: ProgressBar
+var hud_speed: Label
+var kick_button: Button
+var push_button: Button
+var touch_index := -1
 var toast: Label
 var toast_time := 0.0
 var catalog: Dictionary
@@ -124,6 +128,9 @@ func _process(delta: float) -> void:
 	if page == "ride" and is_instance_valid(hud_score):
 		hud_score.text = "%04d" % run.score
 		hud_combo.text = "x%d  •  %d tokens" % [mini(6,1+run.combo/3),run.tokens]
+		hud_speed.text = "%.1f m/s" % run.speed
+		kick_button.modulate = Color.WHITE if run.jump>0.08 and not run.flip_used else Color(0.75,0.8,0.83)
+		push_button.modulate = Color.WHITE if run.jump<=0 and run.grind<=0 else Color(0.75,0.8,0.83)
 		for i in range(hud_hearts.get_child_count()):
 			hud_hearts.get_child(i).modulate=CORAL if i<run.hearts else Color("546b72")
 		hud_progress.value = fmod(run.distance,400.0)/4.0 if run.mode=="endless" else run.distance/run.length*100
@@ -145,7 +152,11 @@ func _handle_events() -> void:
 			"rail":
 				_sound("success")
 				_message("BOARDSLIDE!  +90 × combo")
-			"clear": _message("NICE POP!")
+			"clear": _message("BUMP CLEARED!  +60 x combo")
+			"push": _sound("land")
+			"flip": _sound("pop")
+			"flat_flip": _message("KICKFLIP!  +75 x combo")
+			"obstacle_flip": _message("OFF THE OBSTACLE!  +150 x combo")
 			"ramp":
 				_sound("pop")
 				_message("AIR TIME!")
@@ -166,13 +177,16 @@ func _unhandled_input(event: InputEvent) -> void:
 		match event.keycode:
 			KEY_LEFT,KEY_A: run.steer(-1)
 			KEY_RIGHT,KEY_D: run.steer(1)
-			KEY_SPACE,KEY_UP: run.ollie()
+			KEY_SPACE,KEY_UP: _ride_action(0)
+			KEY_K,KEY_X: _trick_action("kickflip")
+			KEY_P,KEY_C: _trick_action("push")
 			KEY_ESCAPE: _pause()
 	if event is InputEventScreenTouch:
-		if event.pressed:
+		if event.pressed and not pointer_down:
 			pointer_start = event.position
 			pointer_down = true
-		elif pointer_down:
+			touch_index = event.index
+		elif not event.pressed and pointer_down and event.index==touch_index:
 			var movement: Vector2 = event.position-pointer_start
 			if absf(movement.x)>35: run.steer(1 if movement.x>0 else -1)
 			else: run.ollie()
@@ -208,6 +222,7 @@ func _pause() -> void:
 	if run==null or page!="ride": return
 	paused=true
 	pointer_down=false
+	touch_index=-1
 	_store_active()
 	show_page("ride")
 
@@ -232,7 +247,7 @@ func start_run(mode: String, index: int) -> void:
 			banked=false
 			paused=true
 			park.reset_events()
-			park.set_district(run.route/10 if run.mode=="campaign" else run.seed_value%3)
+			park.set_district(run.route/10 if run.mode=="campaign" else run.seed_value%6)
 			show_page("result" if run.done else "ride")
 			return
 	var id: int = profile.new_run()
@@ -249,9 +264,9 @@ func start_run(mode: String, index: int) -> void:
 		_message(profile.last_error)
 		return
 	park.reset_events()
-	park.set_district(index/10 if mode=="campaign" else Profile.today()%3)
+	park.set_district(index/10 if mode=="campaign" else Profile.today()%6)
 	show_page("ride")
-	if id<=2: _message("Swipe to steer • Tap to ollie")
+	if id<=2: _message("Swipe to steer • Push for speed • Flip in the air")
 
 func _bank_result() -> bool:
 	if banked: return true
@@ -277,7 +292,7 @@ func _retry() -> void:
 
 func _next() -> void:
 	if not _can_act() or not _bank_result(): return
-	start_run("campaign",mini(29,run.route+1))
+	start_run("campaign",mini(Run.ROUTE_COUNT-1,run.route+1))
 
 func _continue() -> void:
 	if not _can_act() or banked or run.continued: return
@@ -316,6 +331,11 @@ func _ride_action(direction: int) -> void:
 	if direction==0: run.ollie()
 	else: run.steer(direction)
 
+func _trick_action(action: String) -> void:
+	if page!="ride" or paused or not _can_act() or run==null: return
+	if action=="kickflip": run.kickflip()
+	elif action=="push": run.push()
+
 func _end_ride() -> void:
 	if run==null or not _can_act(): return
 	var before: Dictionary=run.snapshot()
@@ -329,6 +349,8 @@ func _end_ride() -> void:
 
 func show_page(next_page: String) -> void:
 	page=next_page
+	pointer_down=false
+	touch_index=-1
 	for child in ui.get_children():
 		ui.remove_child(child)
 		child.queue_free()
@@ -448,13 +470,27 @@ func _ride_ui(w: float,h: float) -> void:
 	hud_progress=ProgressBar.new()
 	hud_progress.show_percentage=false
 	place(hud_progress,Vector2(36,120),Vector2(w-135,7))
-	place(button("<",func() -> void: _ride_action(-1)),Vector2(24,h-112),Vector2(90,82))
-	place(button("OLLIE",func() -> void: _ride_action(0),true),Vector2(128,h-112),Vector2(w-256,82))
-	place(button(">",func() -> void: _ride_action(1)),Vector2(w-114,h-112),Vector2(90,82))
-	var hint:=label("HOP ON RAILS  •  KEEP YOUR LINE",16,CREAM)
-	hint.add_theme_color_override("font_color",INK)
+	hud_speed=label("",18,CREAM)
+	place(hud_speed,Vector2(w-180,80),Vector2(90,30))
+	# Steering stays above the three equally sized trick controls.
+	var left:=button("<",func() -> void: _ride_action(-1))
+	var right:=button(">",func() -> void: _ride_action(1))
+	left.focus_mode=Control.FOCUS_NONE
+	right.focus_mode=Control.FOCUS_NONE
+	place(left,Vector2(24,h-188),Vector2(78,64))
+	place(right,Vector2(w-102,h-188),Vector2(78,64))
+	var bw:float=(w-64)/3.0
+	var ollie_button:=button("OLLIE",func() -> void: _ride_action(0),true)
+	kick_button=button("KICKFLIP",func() -> void: _trick_action("kickflip"),true)
+	push_button=button("PUSH",func() -> void: _trick_action("push"),true)
+	var controls:Array[Button]=[ollie_button,kick_button,push_button]
+	for i in range(3):
+		controls[i].focus_mode=Control.FOCUS_NONE
+		controls[i].add_theme_font_size_override("font_size",21)
+		place(controls[i],Vector2(24+i*(bw+8),h-112),Vector2(bw,82))
+	var hint:=label("SWIPE TO STEER\nFLIP DURING AN OLLIE",15,INK)
 	hint.horizontal_alignment=HORIZONTAL_ALIGNMENT_CENTER
-	place(hint,Vector2(20,h-154),Vector2(w-40,30))
+	place(hint,Vector2(110,h-183),Vector2(w-220,54))
 	if paused:
 		panel(Vector2(28,h*0.39),Vector2(w-56,340))
 		place(label("Catch your breath",30),Vector2(48,h*0.39+22),Vector2(w-96,50))
@@ -501,10 +537,10 @@ func _scroll(w: float,h: float) -> VBoxContainer:
 	return box
 
 func _campaign(w: float,h: float) -> void:
-	_header("Park lines","30 lines • 3 neighborhoods • Find your flow",w)
+	_header("Park lines","60 lines • 6 neighborhoods • Find your flow",w)
 	var list:=_scroll(w,h)
-	for group in range(3):
-		list.add_child(label(["01  /  PALM PROMENADE","02  /  BRICKYARD GROOVE","03  /  BLUE HOUR PIER"][group],22,CREAM))
+	for group in range(6):
+		list.add_child(label("%02d  /  %s" % [group+1,Run.DISTRICTS[group].to_upper()],22,CREAM))
 		for row in range(4):
 			var line:=HBoxContainer.new()
 			line.add_theme_constant_override("separation",8)
@@ -613,7 +649,7 @@ func _settings(w: float,h: float) -> void:
 		))
 	list.add_child(button("Connect Google Play Games",func() -> void: Services.sign_in()))
 	list.add_child(button("Advertising privacy choices",func() -> void: Services.privacy_options()))
-	var info:=label("Swipe left or right to change lanes. Tap the park or OLLIE to hop. Land on an orange rail for a boardslide. Avoid the low blocks or jump over them.\n\nKeyboard: arrows / A-D and Space.\n\nProgress saves on this device. Android services need a connection; Web keeps local records.\n\nKenney assets • CC0\nGodot and native plugins • MIT\nOriginal game • Apache 2.0\nIllustrated branding • AI generated",20,CREAM)
+	var info:=label("Swipe or use the arrows to steer. OLLIE hops onto rails, clears bumps for bonus points, and pops off a rail. KICKFLIP works once per jump; land it for bonus points, doubled off an obstacle. PUSH adds speed while on the ground; coasting and collisions slow you down. Avoid other skaters and never roll straight into a rail.\n\nKeyboard: arrows / A-D steer, Space ollies, K / X flips, P / C pushes, Escape pauses.\n\nProgress saves on this device. Android services need a connection; Web keeps local records.\n\nKenney assets • CC0\nGodot and native plugins • MIT\nOriginal game • Apache 2.0\nIllustrated branding • AI generated",20,CREAM)
 	info.autowrap_mode=TextServer.AUTOWRAP_WORD_SMART
 	list.add_child(info)
 

@@ -1,0 +1,35 @@
+{
+  "source_tree_sha256": "b289f5ba385cfd9bd52abbe56f9434e93b9aa82754826885b0aec31b3671fcee",
+  "total_checks": 413,
+  "suites": [
+    {
+      "suite": "test_rules",
+      "checks": 229,
+      "failures": 0,
+      "log": "build/final4-test_rules.log",
+      "log_sha256": "9c888da90076c8ebfaafa81f63d6f2caea990e5437ce9cb40953155140f98863",
+      "error_log_empty": true,
+      "isolated_data_root": "build/expansion-tests/final4/test_rules"
+    },
+    {
+      "suite": "test_expansion",
+      "checks": 154,
+      "failures": 0,
+      "log": "build/final4-test_expansion.log",
+      "log_sha256": "ffd0d31ee4c93f17f29342f2222a8c078b963cc265eaf8924317c3e87d3f2679",
+      "error_log_empty": true,
+      "isolated_data_root": "build/expansion-tests/final4/test_expansion"
+    },
+    {
+      "suite": "test_ui_flows",
+      "checks": 30,
+      "failures": 0,
+      "log": "build/final4-test_ui_flows.log",
+      "log_sha256": "433c607e8a2a9be94c73098c1ca1643a2ea3c11d967070188fcc22c57f65fff5",
+      "error_log_empty": true,
+      "isolated_data_root": "build/expansion-tests/final4/test_ui_flows"
+    }
+  ],
+  "type_check": "Godot 4.5.1 loads scripts and exports all final targets",
+  "content_validator": "PASS; original 18 dimensions historical 1.0, separate 18 final Android expansion frames"
+}

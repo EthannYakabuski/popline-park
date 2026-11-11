@@ -32,7 +32,7 @@ static func valid(value: Variant) -> bool:
 	for key in ["music","sfx"]:
 		if not value[key] is bool: return false
 	if int(value.skater) not in [0,1]: return false
-	if not value.stars is Array or value.stars.size() > 30 or not value.quest_claims is Array: return false
+	if not value.stars is Array or value.stars.size() > RunModel.ROUTE_COUNT or not value.quest_claims is Array: return false
 	for key in ["pop","grip","style"]:
 		if not value.gear.has(key) or not RunModel.number_in(value.gear[key],0,4) or float(value.gear[key])!=floor(float(value.gear[key])): return false
 	for key in defaults().totals:
@@ -97,7 +97,7 @@ func unlocked_route() -> int:
 	var last := 0
 	for i in range(data.stars.size()):
 		if int(data.stars[i]) > 0: last = maxi(last,i + 1)
-	return mini(29,last)
+	return mini(RunModel.ROUTE_COUNT-1,last)
 
 func new_run() -> int:
 	var next := data.duplicate(true)

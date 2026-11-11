@@ -1,0 +1,60 @@
+{
+  "checks_failed": 0,
+  "engine": "4.5.1-stable (official)",
+  "native": true,
+  "profile": "user://expansion-acceptance/profile-5392.json",
+  "rides": [
+    {
+      "flips": 8,
+      "fps": 55.0,
+      "hits": 0,
+      "pushes": 27,
+      "rails": 1,
+      "route": 1,
+      "saved_coins": 168.0,
+      "saved_rounds": 1.0,
+      "score": 2350,
+      "won": true
+    },
+    {
+      "flips": 18,
+      "fps": 47.0,
+      "hits": 0,
+      "pushes": 36,
+      "rails": 5,
+      "route": 31,
+      "saved_coins": 849.0,
+      "saved_rounds": 2.0,
+      "score": 12285,
+      "won": true
+    },
+    {
+      "flips": 16,
+      "fps": 36.0,
+      "hits": 0,
+      "pushes": 49,
+      "rails": 2,
+      "route": 41,
+      "saved_coins": 1346.0,
+      "saved_rounds": 3.0,
+      "score": 8450,
+      "won": true
+    },
+    {
+      "flips": 23,
+      "fps": 47.0,
+      "hits": 0,
+      "pushes": 51,
+      "rails": 4,
+      "route": 60,
+      "saved_coins": 2144.0,
+      "saved_rounds": 4.0,
+      "score": 13875,
+      "won": true
+    }
+  ],
+  "screenshot_provenance": "Genuine implemented viewport during automated play; unlocks are a disposable test fixture",
+  "apk_sha256": "d87eb7ed9d9ddafb2dfcb5f685312ddfa63447869f47daf9372e28d360aa7873",
+  "device": "API 30 x86 emulator; read-only/no-snapshot; not physical hardware",
+  "sampled_fps_is_not_a_benchmark": true
+}

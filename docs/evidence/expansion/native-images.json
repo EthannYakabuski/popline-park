@@ -1,0 +1,132 @@
+{
+  "apk_sha256": "d87eb7ed9d9ddafb2dfcb5f685312ddfa63447869f47daf9372e28d360aa7873",
+  "provenance": "Genuine Android emulator game viewport captured during the final debug acceptance run; seeded unlock profile, no physical-device or SDK overlay capture claim",
+  "images": {
+    "flat-kickflip.png": {
+      "sha256": "a619f37a6266dafff1e3526eb3df8e007a029a51501a6ed6fc70e9b875fe36f2",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-01-result.png": {
+      "sha256": "9fc2b6e82aa6a8caf752703c2f5a93418a734eaf7b81a12a39002ce6eb86e931",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-01-start.png": {
+      "sha256": "11773fcf117667aff9485036261e6deb5bd6268281c787012da4b2d63c8184ba",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-31-result.png": {
+      "sha256": "7f03b0b59b6aef2ce096ee126bc0a35f7f4a4add4bd11fce40cef15908254439",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-31-ride.png": {
+      "sha256": "4201dc1a7a2bd90ac06736b72aae4b2cabed2ac84c27f3070ad781904fedabde",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-31-start.png": {
+      "sha256": "f5dbdb41d83a573881eb4fa1a1fdc19164f9692467ba78494fcbf806bf8a7736",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-31-traffic.png": {
+      "sha256": "55d41f03e6f38ea9548c67e4b66c108edc83832e273e2ac5775c09d9d84e652f",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-41-result.png": {
+      "sha256": "367edf6d2be11bbbbc61e434f41e08938e20d452d7f05c9722304e102347209a",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-41-ride.png": {
+      "sha256": "74adab5cbc5d4c2659ff12f41d5fae962e8b7ab8fa7a48d12b248b9f032dcd37",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-41-start.png": {
+      "sha256": "9521e2584a334d30f4c6f6960d9ad9ae0fbf3f33552f9f52d1d34e90cbc0f6ce",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-41-traffic.png": {
+      "sha256": "6c693725c0a238cddcd68febefcba4c01694523604af7e13e890327b74a31b7b",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-60-result.png": {
+      "sha256": "5c9285a0483cb89ab4fd524131dc2a0b6378dbb87bf8f8847f30107483c7b219",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-60-ride.png": {
+      "sha256": "f45c732bc7acfd4afa46d6f3c94842136f574c3ade05e361269b40bcde814d31",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-60-start.png": {
+      "sha256": "73f2956fed0d76a3d8dac15ebcb6fbe088e3c3cf29b52872a62fb42301f1af61",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "line-60-traffic.png": {
+      "sha256": "8029f15e9b5bbb547f6f1e55f8c031e065d89e20ce37f578648d0f6c53fe69e2",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "long-rail.png": {
+      "sha256": "f43380ca703b28b0fa28b1a058c4e89996b7a72d8a305885d8e40d2e191549a8",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "push-forward.png": {
+      "sha256": "76ff62235177c37531827c9c1bb5d10976b1cee2591f6efe06a430a1cff032c4",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    },
+    "rail-kickflip.png": {
+      "sha256": "1f66960a4627b6073cec55b291ce118c7740574606f7a13b347fbcfab4f955c7",
+      "dimensions": [
+        1080,
+        2022
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "pck_sha256": "b91b782a919b125081255a0df9c1f80067c6fe12e96e027f3b965c56bc3e734c",
+  "wasm_sha256": "91952c4fcdc3a407b2cc97ca953591c8df136019da983d75b29d456ca736038d",
+  "url": "http://127.0.0.1:8767/play/",
+  "browser": "Chromium in-app browser, 1280x720",
+  "final_export_smoke": [
+    "Loaded saved 19-coin local profile",
+    "Started line 1; P, Space, K, Escape accepted push/ollie/flip/pause",
+    "All three visible buttons clicked under pause; score 0, 3 hearts and 7.7 m/s stayed unchanged",
+    "End ride and bank returned home with 24 coins",
+    "Observed warning/error console entries: zero"
+  ],
+  "earlier_same_gameplay_checks": [
+    "Repeated keyboard/button inputs under pause",
+    "Save and full page reload midflip restored paused 7.9 m/s state",
+    "Resume paid one 90-point flat flip plus 20 token points; boost coasted to 6.8 m/s",
+    "Visible three-button input worked; 60-line/six-neighborhood menu displayed"
+  ],
+  "earlier_check_limit": "Earlier full persistence test preceded the final late-ramp flip scoring correction; final export smoke above follows all gameplay edits",
+  "review": "Local review inspected; all seven images load and UTF-8 punctuation renders correctly",
+  "physical_touch_tested": false
+}

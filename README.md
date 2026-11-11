@@ -6,9 +6,19 @@
 
 ![Popline Park illustrated key art](marketing/feature-graphic-1024x500.png)
 
-30 short campaign lines, three district palettes, Endless Ride, a seeded daily line, daily goals, a seven-day gift streak, two skaters and capped gear upgrades. Versioned local saves, 20 achievements and three record categories work offline. Android AdMob and Play Games integrations use sample/disabled configuration until publisher setup.
+60 short campaign lines, six neighborhoods, Endless Ride, a seeded daily line, daily goals, a seven-day gift streak, two skaters and capped gear upgrades. Versioned local saves, 20 achievements and three record categories work offline. Android AdMob and Play Games integrations use sample/disabled configuration until publisher setup.
 
-Touch: swipe left/right and tap to ollie, or use the large on-screen buttons. Keyboard: arrows/A–D and Space. Pause before leaving a ride; backgrounding also pauses and saves. A saved ride resumes until completed or explicitly ended and banked.
+Touch: swipe left/right and tap to ollie, or use the steering arrows and OLLIE / KICKFLIP / PUSH buttons. Keyboard: arrows/A-D steer, Space ollies, K/X flips, P/C pushes, Escape pauses. Backgrounding pauses and saves; a saved ride resumes until completed or explicitly ended and banked.
+
+## 1.1 expansion
+
+This expansion includes the new controls, forgiving rails, moving skaters and 60 campaign lines. GitHub Actions runs all three test suites and builds/deploys the Web preview from main. Android APK/AAB artifacts were built and verified locally; CI does not compile Android. See [expansion acceptance](docs/EXPANSION_ACCEPTANCE.md) for exact local artifacts and evidence. Sunset Courts (31–40), Pinecrest Commons (41–50) and Harbor Lights (51–60) follow the original 30 lines. Original saves and earned progress remain compatible.
+
+Use the public play/review links above for the deployed update. To run the previously verified local build, run this from the project folder and open http://127.0.0.1:8767/play/:
+
+```powershell
+py -3 -m http.server 8767 --bind 127.0.0.1 --directory build/expansion-v1.1/site
+```
 
 ## Run and build
 
@@ -32,6 +42,7 @@ Tests must use fresh isolated user-data roots. On Linux set `XDG_DATA_HOME` and 
 ```sh
 godot --headless --path . --script tests/test_rules.gd
 godot --headless --path . --script tests/test_ui_flows.gd
+godot --headless --path . --script tests/test_expansion.gd
 ```
 
 Use a different empty root for each test run. Tests never reset genuine player data. `tests/capture_runtime.gd -- phone` (or `tablet7`, `tablet10`) drives a real rendered fresh-profile ride and saves genuine viewport images. It is automated desktop evidence, not physical-device playtesting.

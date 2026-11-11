@@ -46,9 +46,10 @@ jobs:
         run: |
           export PATH="$PWD/.ci/godot:$PATH"
           Godot_v4.5.1-stable_linux.x86_64 --headless --editor --path . --import
-          mkdir -p build/test-rules build/test-ui build/site/play
+          mkdir -p build/test-rules build/test-ui build/test-expansion build/site/play
           XDG_DATA_HOME="$PWD/build/test-rules" POPLINE_TEST_ROOT="$PWD/build/test-rules" timeout 120 Godot_v4.5.1-stable_linux.x86_64 --headless --path . --script tests/test_rules.gd
           XDG_DATA_HOME="$PWD/build/test-ui" POPLINE_TEST_ROOT="$PWD/build/test-ui" timeout 120 Godot_v4.5.1-stable_linux.x86_64 --headless --path . --script tests/test_ui_flows.gd
+          XDG_DATA_HOME="$PWD/build/test-expansion" POPLINE_TEST_ROOT="$PWD/build/test-expansion" timeout 120 Godot_v4.5.1-stable_linux.x86_64 --headless --path . --script tests/test_expansion.gd
           python3 tools/verify_android_bundle.py
           python3 tools/validate_content.py
           Godot_v4.5.1-stable_linux.x86_64 --headless --path . --export-release Web build/site/play/index.html

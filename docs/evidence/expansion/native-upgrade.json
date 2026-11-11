@@ -1,0 +1,12 @@
+{
+  "method": "Install preserved 1.0 APK; seed synthetic old-format profile; install -r 1.1 ordinary APK; launch; cold-read profile after actual application achievement commit",
+  "coins": 678.0,
+  "xp": 1234.0,
+  "completed_levels": 30,
+  "active_run_id": 81.0,
+  "active_jump": 0.4,
+  "sequence_before": 7,
+  "sequence_after": 8,
+  "achievements_after_load": 17,
+  "original_save_fields_preserved": true
+}

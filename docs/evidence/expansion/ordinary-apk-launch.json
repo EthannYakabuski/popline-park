@@ -1,0 +1,26 @@
+{
+  "apk_sha256": "b30509a816de9724599ca838eebc78ecf106095cef913b3ddeb10a47b0f71520",
+  "package": "com.ethannyakabuski.poplinepark",
+  "version": "1.1.0 (2)",
+  "launch_pid": "8347",
+  "ordinary_no_acceptance_driver": true,
+  "observed_script_and_native_fatal_errors": [],
+  "engine_lines": [
+    "11-11 15:45:43.726  8347  8378 W OpenGLRenderer: Failed to choose config with EGL_SWAP_BEHAVIOR_PRESERVED, retrying without...",
+    "11-11 15:45:43.839  8347  8386 W RegularContextFactory: creating OpenGL ES 3.0 context :",
+    "11-11 15:45:44.022  8347  8386 I godot   : Godot Engine v4.5.1.stable.official.f62fdbde1 - https://godotengine.org",
+    "11-11 15:45:44.126  8347  8378 I OpenGLRenderer: Davey! duration=1966ms; Flags=1, IntendedVsync=1973903086298, Vsync=1975419752904, OldestInputEvent=9223372036854775807, NewestInputEvent=0, HandleInputStart=1975429874000, AnimationStart=1975429911500, PerformTraversalsStart=1975430565500, DrawStart=1975705186300, SyncQueued=1975706656900, SyncStart=1975742827100, IssueDrawCommandsStart=1975743655200, SwapBuffers=1975803358200, FrameCompleted=1975905321500, DequeueBufferDuration=63394000, QueueBufferDuration=907800, GpuCompleted=0, ",
+    "11-11 15:45:45.113  8347  8386 I godot   : OpenGL API OpenGL ES 3.0 (4.5.0 NVIDIA 560.94) - Compatibility - Using Device: Google (NVIDIA Corporation) - Android Emulator OpenGL ES Translator (NVIDIA RTX A400/PCIe/SSE2)"
+  ],
+  "manifest": {
+    "min_sdk": 24,
+    "target_sdk": 36,
+    "abis": [
+      "arm64-v8a",
+      "x86",
+      "x86_64"
+    ],
+    "admob_sample_app_id": "ca-app-pub-3940256099942544~3347511713"
+  },
+  "device": "API30 x86 emulator; not physical-device evidence"
+}

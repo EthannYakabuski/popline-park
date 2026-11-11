@@ -1,0 +1,57 @@
+{
+  "checks_failed": 0,
+  "engine": "4.5.1-stable (official)",
+  "native": false,
+  "profile": "user://expansion-acceptance/profile-8294.json",
+  "rides": [
+    {
+      "flips": 8,
+      "fps": 18.0,
+      "hits": 0,
+      "pushes": 27,
+      "rails": 1,
+      "route": 1,
+      "saved_coins": 168.0,
+      "saved_rounds": 1.0,
+      "score": 2350,
+      "won": true
+    },
+    {
+      "flips": 19,
+      "fps": 60.0,
+      "hits": 0,
+      "pushes": 33,
+      "rails": 5,
+      "route": 31,
+      "saved_coins": 883.0,
+      "saved_rounds": 2.0,
+      "score": 13005,
+      "won": true
+    },
+    {
+      "flips": 18,
+      "fps": 60.0,
+      "hits": 0,
+      "pushes": 43,
+      "rails": 2,
+      "route": 41,
+      "saved_coins": 1437.0,
+      "saved_rounds": 3.0,
+      "score": 9540,
+      "won": true
+    },
+    {
+      "flips": 23,
+      "fps": 60.0,
+      "hits": 0,
+      "pushes": 51,
+      "rails": 4,
+      "route": 60,
+      "saved_coins": 2235.0,
+      "saved_rounds": 4.0,
+      "score": 13875,
+      "won": true
+    }
+  ],
+  "screenshot_provenance": "Genuine implemented viewport during automated play; unlocks are a disposable test fixture"
+}

@@ -101,26 +101,15 @@ func test_all() -> void:
 	var daily_second: Dictionary=p.settle(same_day,20008)
 	check(int(daily_first.coins)==int(daily_second.coins)+80,"daily completion bonus once")
 	check(int(p.data.totals.daily)==1,"daily unique day total")
-	# A baseline policy can finish all 30 routes with stock gear and no ads.
+	# A baseline policy can finish all 60 routes with stock gear and no ads.
 	# It moves toward an approaching feature early, then hops using the real input methods.
-	for route in range(30):
+	for route in range(Run.ROUTE_COUNT):
 		var ride:=Run.new()
 		ride.setup("campaign",route,20008,{},route+100)
 		for frame in range(7000):
-			var nearest: Dictionary={}
-			var best:=100.0
-			for e in ride.events:
-				var d: float=float(e.d)-ride.distance
-				if e.kind!="token" and d>0 and d<best:
-					best=d
-					nearest=e
-			if not nearest.is_empty():
-				if best>4.0 and best<10.0:
-					var target_lane:=int(nearest.lane)
-					if nearest.kind=="block": target_lane=(target_lane+1)%3
-					var direction:=signi(target_lane-ride.lane)
-					if direction!=0: ride.steer(direction)
-				if nearest.kind=="rail" and best<ride.speed*0.4 and best>ride.speed*0.3 and ride.jump<=0 and ride.grind<=0:ride.ollie()
+			var action:Dictionary=preload("res://game/acceptance_policy.gd").actions(ride)
+			if action.steer:ride.steer(action.steer)
+			if action.ollie:ride.ollie()
 			ride.step(1.0/60.0)
 			if ride.done:break
 		check(ride.won,"route %d beatable with stock gear"%(route+1))

@@ -1,78 +1,115 @@
 extends Node
-## Only attached by an explicit debug-only acceptance export feature.
-## Drives genuine game actions and captures the native Godot viewport.
+## Debug-only acceptance driver. Unlocks are a test fixture; rides use actual inputs/rules.
+const Policy=preload("res://game/acceptance_policy.gd")
 var game:Node
 var services:Node
-var caught:=false
-var caught_rail:=false
-var elapsed:=0.0
-var ready_to_play:=false
-var finished:=false
-var failure_run:=false
+var output:String
+var captures:Dictionary={}
+var results:Array=[]
+var driving:=false
+var failures:=0
+var first_rail:=false
+var popped_rail:=false
+var checked_pause:=false
+var current_route:=0
+func check(ok:bool,detail:String)->void:
+	print("EXPANSION_CHECK ","PASS " if ok else "FAIL ",detail)
+	if not ok: failures+=1
 func start(owner_game:Node)->void:
 	game=owner_game
 	services=get_node("/root/Services")
-	if not OS.is_debug_build() or not OS.has_feature("acceptance"):
-		queue_free()
-		return
-	DirAccess.make_dir_recursive_absolute("user://acceptance")
-	game.profile=game.Profile.new("user://acceptance/profile-"+str(Time.get_ticks_msec())+".json")
+	output="user://expansion-acceptance" if OS.has_feature("android") else "res://build/expansion-v1.1/captures/desktop"
+	DirAccess.make_dir_recursive_absolute(output)
+	DirAccess.make_dir_recursive_absolute("user://expansion-acceptance")
+	game.profile=game.Profile.new("user://expansion-acceptance/profile-"+str(Time.get_ticks_msec())+".json")
+	var seed:Dictionary=game.Profile.defaults()
+	seed.stars.resize(59);seed.stars.fill(1)
+	check(game.profile.commit(seed),"disposable unlock fixture saved")
 	game.show_page("home")
-	await get_tree().create_timer(15).timeout
-	print("NATIVE_ACCEPTANCE_SERVICES ",JSON.stringify({"native_ads":services._native_ads,"ads_ready":services._ads_ready,"pgs_ready":services._pgs_ready,"reward_available":services.can_reward(),"status":services.status()}))
-	await capture("01-home")
-	game.start_run("campaign",0)
-	ready_to_play=true
-
-func capture(name_value:String)->void:
-	await RenderingServer.frame_post_draw
-	var img:=get_viewport().get_texture().get_image()
-	var error:=img.save_png("user://acceptance/"+name_value+".png")
-	print("NATIVE_VIEWPORT ",name_value," ",img.get_width(),"x",img.get_height()," save=",error)
-
-func _process(delta:float)->void:
-	if not ready_to_play or finished:return
-	elapsed+=delta
-	if elapsed>100:
-		finished=true
-		print("NATIVE_ACCEPTANCE_TIMEOUT ",game.page," ",services.status())
-		return
-	if game.page=="ride":
-		if game.paused and not services.fullscreen_ad_active():game._resume()
-		var ride:RefCounted=game.run
-		var near:Dictionary={}
-		var best:=100.0
-		for e in ride.events:
-			var d:float=float(e.d)-ride.distance
-			if e.kind!="token" and d>0 and d<best:best=d;near=e
-		if not near.is_empty():
-			if best>4 and best<10:
-				var target:=int(near.lane)
-				if near.kind=="block" and not failure_run:target=(target+1)%3
-				var direction:=signi(target-ride.lane)
-				if direction!=0:game._ride_action(direction)
-			if not failure_run and near.kind=="rail" and best<ride.speed*0.4 and best>ride.speed*0.3:game._ride_action(0)
-		if ride.distance>25 and not caught:
-			caught=true
-			capture("02-ride")
-		if ride.grind>0.1 and not caught_rail:
-			caught_rail=true
-			capture("03-grind")
-	elif game.page=="result":
-		finished=true
-		if failure_run:
-			await capture("05-failure")
-			print("NATIVE_REWARDED_REQUEST ",JSON.stringify({"available":services.can_reward(),"hearts":game.run.hearts,"continued":game.run.continued,"profile_path":game.profile.path}))
-			game._continue()
-			return
-		await capture("04-result")
+	await get_tree().create_timer(15 if OS.has_feature("android") else 1).timeout
+	print("EXPANSION_PLATFORM ",JSON.stringify({"native_ads":services._native_ads,"ads_ready":services._ads_ready,"status":services.status(),"profile":game.profile.path,"fixture":"59 prior level unlocks; current rides and payouts are genuine"}))
+	for index in [0,30,40,59]:
+		current_route=index
+		# Isolate each ride's service cadence; the final ride deliberately exercises transition 3.
+		services._round_count=2 if index==59 else 0
+		game.start_run("campaign",index)
+		check(game.page=="ride" and game.run.route==index,"starts line "+str(index+1))
+		await capture("line-%02d-start"%(index+1))
+		driving=true
+		var start_time:=Time.get_ticks_msec()
+		while game.page=="ride" and Time.get_ticks_msec()-start_time<120000:
+			await get_tree().process_frame
+		driving=false
+		check(game.page=="result" and game.run.won,"completed line "+str(index+1))
+		await capture("line-%02d-result"%(index+1))
 		var cold=game.Profile.new(game.profile.path)
-		print("NATIVE_ACCEPTANCE_RESULT ",JSON.stringify({"won":game.run.won,"score":game.run.score,"rails":game.run.rails,"coins":cold.data.coins,"saved_rounds":cold.data.totals.rounds,"fps":Engine.get_frames_per_second(),"native_ads":services._native_ads,"ads_ready":services._ads_ready,"reward_available":services.can_reward()}))
-		await get_tree().create_timer(2).timeout
-		if not game._can_act():
-			print("NATIVE_ACCEPTANCE_STOPPED_AT_FULLSCREEN_TRANSITION")
+		var result:Dictionary={"route":index+1,"won":game.run.won,"score":game.run.score,"rails":game.run.rails,"flips":game.run.flips,"pushes":game.run.push_count,"hits":game.run.hits,"saved_rounds":cold.data.totals.rounds,"saved_coins":cold.data.coins,"fps":Engine.get_frames_per_second()}
+		results.append(result)
+		print("EXPANSION_RIDE ",JSON.stringify(result))
+		if not game.run.won:break
+		await get_tree().create_timer(1).timeout
+		if index!=59 and not game._can_act():
+			check(false,"unexpected fullscreen transition before next test")
+			break
+	var summary:Dictionary={"checks_failed":failures,"rides":results,"profile":game.profile.path,"engine":Engine.get_version_info().string,"native":OS.has_feature("android"),"screenshot_provenance":"Genuine implemented viewport during automated play; unlocks are a disposable test fixture"}
+	var file:=FileAccess.open(output+"/summary.json",FileAccess.WRITE)
+	file.store_string(JSON.stringify(summary,"  "));file.close()
+	print("EXPANSION_RUNTIME_COMPLETE ",JSON.stringify(summary))
+	if not OS.has_feature("android"):get_tree().quit(1 if failures else 0)
+func capture(label:String)->void:
+	if captures.has(label):return
+	captures[label]=true
+	await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	var frame:=get_viewport().get_texture().get_image()
+	check(frame.save_png(output+"/"+label+".png")==OK,"capture "+label)
+func _process(_delta:float)->void:
+	if not driving or game.page!="ride" or not game._can_act():return
+	if game.paused:game._resume()
+	var run:RefCounted=game.run
+	if current_route==0:
+		if run.duration<0.04:
+			for i in range(20):game._trick_action("push")
+			check(run.push_count==1,"same-frame push spam grants one stroke")
+		if run.push_time>0.25 and run.push_time<0.4:capture("push-forward")
+		if run.duration>0.65 and run.duration<0.69:game._ride_action(0)
+		if run.jump>0.2 and run.jump<0.65:game._trick_action("kickflip")
+		if run.flip_time>0.12 and run.flip_time<0.26:
+			capture("flat-kickflip")
+			if not checked_pause:
+				checked_pause=true
+				game._pause()
+				var before:Dictionary=run.snapshot()
+				for i in range(12):
+					game._trick_action("push");game._trick_action("kickflip");game._ride_action(0);game._process(0.03)
+				check(run.snapshot()==before,"paused airborne repeated controls stay frozen")
+				var cold=game.Profile.new(game.profile.path)
+				check(cold.data.active.flip_used and is_equal_approx(float(cold.data.active.jump),run.jump),"midflip state saved during interruption")
+				game._resume()
+		if not first_rail:
+			for e in run.events:
+				if e.kind=="rail" and not e.used:
+					var front:float=run.event_front(e)-run.distance
+					if front>0 and front<12:
+						var direction:=signi(int(e.lane)-run.lane)
+						if direction!=0:game._ride_action(direction)
+						if front<run.speed*0.55:game._ride_action(0)
+						return
+		if run.grind>0 and not popped_rail:
+			first_rail=true
+			capture("long-rail")
+			if run.grind<0.45:
+				game._ride_action(0);game._trick_action("kickflip")
+				popped_rail=true
 			return
-		failure_run=true
-		elapsed=0
-		game._retry()
-		finished=false
+		if popped_rail and run.obstacle_air and run.flip_time>0.1 and run.flip_time<0.24 and run.height>0.7:capture("rail-kickflip")
+	var action:Dictionary=Policy.actions(run,true)
+	if action.steer:game._ride_action(action.steer)
+	if action.ollie:game._ride_action(0)
+	if action.flip:game._trick_action("kickflip")
+	if action.push:game._trick_action("push")
+	if current_route>=30:
+		if run.distance>50:capture("line-%02d-ride"%(current_route+1))
+		for e in run.events:
+			if e.kind=="skater" and run.event_position(e)-run.distance<16 and run.event_position(e)-run.distance>6:
+				capture("line-%02d-traffic"%(current_route+1));break
