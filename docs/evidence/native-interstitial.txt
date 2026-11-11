@@ -1,0 +1,3 @@
+Controlled emulator cadence fixture: initial persisted round count set to 2 in this new app's disposable test profile. One actual completed ride triggered the third-round SDK interstitial. These excerpts prove presentation, not dismissal or three freshly played rounds. The subsequent driver stages are outside this fixture.
+11-11 13:42:22.159  7719  7753 I godot   : NATIVE_ACCEPTANCE_RESULT {"ads_ready":true,"coins":102.0,"fps":47.0,"native_ads":true,"rails":4,"reward_available":false,"saved_rounds":1.0,"score":1155,"won":true}
+11-11 13:42:22.180  7719  7753 I godot   : NATIVE_AD_EVENT {"context":"","event":"interstitial_presented"}

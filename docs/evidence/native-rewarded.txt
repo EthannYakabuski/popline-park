@@ -1,0 +1,13 @@
+Final acceptance APK: actual native run and Google sample rewarded ad. No native dismissal is claimed.
+11-11 13:38:36.160  7451  7494 I godot   : NATIVE_MENU_METRICS {"density":2.75,"dpi":440,"menu_visible":false,"native_banner_pixels":137.0,"pixels_per_local_unit":2.0,"reference":"root_viewport","reserve":0.0,"safe_area_pixels":"[P: (0, 0), S: (1080, 2022)]","safe_bottom_pixels":132.0,"screen_pixels":"(1080, 2022)","viewport_units":"(540.0, 1011.0)","window_pixels":"(1080, 2022)"}
+11-11 13:38:42.458  7451  7494 I godot   : NATIVE_VIEWPORT 02-ride 1080x2022 save=0
+11-11 13:38:46.222  7451  7494 I godot   : NATIVE_VIEWPORT 03-grind 1080x2022 save=0
+11-11 13:39:09.630  7451  7494 I godot   : NATIVE_MENU_METRICS {"density":2.75,"dpi":440,"menu_visible":true,"native_banner_pixels":137.0,"pixels_per_local_unit":2.0,"reference":"root_viewport","reserve":152.0,"safe_area_pixels":"[P: (0, 0), S: (1080, 2022)]","safe_bottom_pixels":132.0,"screen_pixels":"(1080, 2022)","viewport_units":"(540.0, 1011.0)","window_pixels":"(1080, 2022)"}
+11-11 13:39:10.536  7451  7494 I godot   : NATIVE_VIEWPORT 04-result 1080x2022 save=0
+11-11 13:39:10.537  7451  7494 I godot   : NATIVE_ACCEPTANCE_RESULT {"ads_ready":true,"coins":102.0,"fps":47.0,"native_ads":true,"rails":4,"reward_available":true,"saved_rounds":1.0,"score":1155,"won":true}
+11-11 13:39:12.478  7451  7494 I godot   : NATIVE_MENU_METRICS {"density":2.75,"dpi":440,"menu_visible":false,"native_banner_pixels":137.0,"pixels_per_local_unit":2.0,"reference":"root_viewport","reserve":0.0,"safe_area_pixels":"[P: (0, 0), S: (1080, 2022)]","safe_bottom_pixels":132.0,"screen_pixels":"(1080, 2022)","viewport_units":"(540.0, 1011.0)","window_pixels":"(1080, 2022)"}
+11-11 13:39:27.504  7451  7494 I godot   : NATIVE_MENU_METRICS {"density":2.75,"dpi":440,"menu_visible":true,"native_banner_pixels":137.0,"pixels_per_local_unit":2.0,"reference":"root_viewport","reserve":152.0,"safe_area_pixels":"[P: (0, 0), S: (1080, 2022)]","safe_bottom_pixels":132.0,"screen_pixels":"(1080, 2022)","viewport_units":"(540.0, 1011.0)","window_pixels":"(1080, 2022)"}
+11-11 13:39:28.194  7451  7494 I godot   : NATIVE_VIEWPORT 05-failure 1080x2022 save=0
+11-11 13:39:28.194  7451  7494 I godot   : NATIVE_REWARDED_REQUEST {"available":true,"continued":false,"hearts":0,"profile_path":"user://acceptance/profile-6253.json"}
+11-11 13:39:28.784  7451  7494 I godot   : NATIVE_AD_EVENT {"context":"continue_run_2","event":"rewarded_presented"}
+11-11 13:39:38.916  7451  7494 I godot   : NATIVE_AD_EVENT {"context":"continue_run_2","event":"rewarded_earned"}

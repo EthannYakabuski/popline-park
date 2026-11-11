@@ -2,6 +2,8 @@
 
 **Find your line.** A portrait skateboarding arcade game made with Godot 4.5.1 Compatibility. Steer between three lanes, ollie onto rails, dodge low blocks and build a cleaner combo.
 
+[Play the Web preview](https://ethannyakabuski.github.io/popline-park/) · [Visual review](https://ethannyakabuski.github.io/popline-park/review/) · [Source](https://github.com/EthannYakabuski/popline-park)
+
 ![Popline Park illustrated key art](marketing/feature-graphic-1024x500.png)
 
 30 short campaign lines, three district palettes, Endless Ride, a seeded daily line, daily goals, a seven-day gift streak, two skaters and capped gear upgrades. Versioned local saves, 20 achievements and three record categories work offline. Android AdMob and Play Games integrations use sample/disabled configuration until publisher setup.
