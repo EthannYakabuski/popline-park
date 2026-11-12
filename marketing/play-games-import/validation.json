@@ -1,0 +1,20 @@
+{
+  "game": "Popline Park",
+  "achievement_count": 20,
+  "archive_entries": 22,
+  "total_points": 815,
+  "all_standard": true,
+  "all_revealed": true,
+  "zip": "popline-park-achievements-google-play.zip",
+  "zip_bytes": 6156604,
+  "zip_sha256": "96540910f9ea96fdf43b47b15a3bd6f422efa7b96d0c078bf1cda845eb4fe613",
+  "catalog_canonical_json_sha256": "b573187985bc7387bba304f5dc9ea44e0801e9fb28f91b7cd3c2cdc2b18d0a41",
+  "icon_dimensions": "512x512",
+  "members_under_1000000_bytes": true,
+  "flat_archive": true,
+  "csv_headers": false,
+  "zip_crc_and_source_bytes": "PASS",
+  "console_import_tested": false,
+  "production_ids_configured": false,
+  "schema": "https://developer.android.com/games/pgs/integrate-achievements#zip-file-guidelines"
+}

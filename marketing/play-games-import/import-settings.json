@@ -1,0 +1,26 @@
+{
+  "game": "Popline Park",
+  "slug": "popline-park",
+  "points": {
+    "first_line": 10,
+    "five_lines": 20,
+    "twenty_lines": 50,
+    "fifty_rides": 75,
+    "first_rail": 10,
+    "rail_ten": 25,
+    "rail_fifty": 50,
+    "trick_ten": 20,
+    "trick_hundred": 50,
+    "combo_six": 25,
+    "combo_fifteen": 75,
+    "score_thousand": 20,
+    "score_three": 60,
+    "tokens_hundred": 25,
+    "clean_five": 50,
+    "level_five": 40,
+    "level_ten": 80,
+    "daily_three": 40,
+    "gear_three": 30,
+    "star_thirty": 60
+  }
+}
