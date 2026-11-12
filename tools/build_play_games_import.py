@@ -42,6 +42,7 @@ def png_dimensions(data):
     return dimensions
 
 def expected():
+    check((OUT / ".gdignore").is_file(), "Missing .gdignore: Console CSVs must not be imported by Godot")
     catalog = json.loads(CATALOG.read_text(encoding="utf-8"))
     achievements = catalog["achievements"]
     keys = [a["key"] for a in achievements]

@@ -21,6 +21,8 @@ No Play Console upload, backend configuration, signing, service enablement or ap
 
 ## Rebuild and verify
 
+Keep the adjacent `.gdignore` file: it excludes these store-only CSVs from Godot resource import and prevents them from being parsed as translation tables. It is deliberately outside the upload ZIP.
+
 Run `python tools/build_play_games_import.py` to rebuild, then `python tools/build_play_games_import.py --check` for read-only validation. The builder uses only the Python standard library. It checks text and CSV structure, key and icon matching, PNG dimensions/chunk CRCs, size/count/point limits, ZIP CRCs and exact source bytes. ZIP members use fixed timestamps for reproducibility.
 
 `validation.json` records the archive size/SHA256, catalog hash and validation scope. Passing local checks does not prove Google Play Console accepted the import or real Android services work. No gameplay/runtime source changed, so no new local APK/device acceptance is claimed.
